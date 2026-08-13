@@ -1,6 +1,8 @@
-import "./app.css";
+
 
 import { useEffect, useState } from "react";
+
+import "./App.css";
 
 import cursos from "./data/cursos.json";
 import estudiante from "./data/estudiante.json";
