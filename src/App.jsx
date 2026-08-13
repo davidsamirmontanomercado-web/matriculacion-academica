@@ -1,3 +1,5 @@
+import "./app.css";
+
 import { useEffect, useState } from "react";
 
 import cursos from "./data/cursos.json";
@@ -5,8 +7,10 @@ import estudiante from "./data/estudiante.json";
 
 import CourseCard from "./components/CourseCard";
 import EnrollmentSummary from "./components/EnrollmentSummary";
+import Login from "./components/Login";
 
 function App() {
+  const [usuarioLogueado, setUsuarioLogueado] = useState(null);
   const [cursosSeleccionados, setCursosSeleccionados] = useState([]);
   const [mensajeError, setMensajeError] = useState("");
   const [matriculaConfirmada, setMatriculaConfirmada] = useState(false);
@@ -22,6 +26,18 @@ function App() {
       setMatriculaConfirmada(true);
     }
   }, []);
+
+  const handleLogin = (id) => {
+    const estudianteId = Number(id);
+
+    if (estudianteId === estudiante.id) {
+      setUsuarioLogueado(estudiante);
+    } else {
+      alert("ID de estudiante incorrecto.");
+    }
+  };
+
+
 
   const cursosDisponibles = cursos.filter(
     (curso) =>
@@ -147,29 +163,46 @@ function App() {
     setMatriculaConfirmada(false);
     setMensajeError("");
   };
+
+  if (!usuarioLogueado) {
+    return <Login onLogin={handleLogin} />;
+  }
+
   return (
     <main className="app">
       <header className="header">
-        <div>
-          <h1>Sistema de Matrícula</h1>
-          <p>Gestión de cursos académicos</p>
+        <div className="header-brand">
+          <img
+            src="/Favicon.png"
+            alt="Logo del sistema de matrícula"
+            className="header-logo"
+          />
+
+          <div>
+            <h1>Sistema de Matrícula</h1>
+            <p>Gestión de cursos académicos</p>
+          </div>
         </div>
+
+        <button
+          onClick={() => setUsuarioLogueado(null)}
+        >
+          Cerrar sesión
+        </button>
       </header>
 
       <section className="student-card">
         <div>
           <span className="label">Estudiante</span>
 
-          <h2>{estudiante.nombre}</h2>
-
-          <p>{estudiante.carrera}</p>
+          <h2>{usuarioLogueado.nombre}</h2>
+          <p>{usuarioLogueado.carrera}</p>
         </div>
 
         <div className="student-info">
           <div>
             <span className="label">Semestre</span>
-
-            <strong>{estudiante.semestre}</strong>
+            <strong>{usuarioLogueado.semestre}</strong>
           </div>
 
           <div>
@@ -242,6 +275,7 @@ function App() {
       />
     </main>
   );
+
 }
 
-export default App;
+export default App; 

@@ -1,362 +1,385 @@
-.counter {
-  font-size: 16px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 2px solid transparent;
-  transition: border-color 0.3s;
-  margin-bottom: 24px;
+/* app.css - Estilo Tsinghua University para la aplicación principal */
 
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
+/* ===== Variables y reset ===== */
+:root {
+  --tsinghua-primary: #8B1A4A;
+  --tsinghua-primary-dark: #6B1A3A;
+  --tsinghua-primary-light: #A31F34;
+  --tsinghua-secondary: #1a1a2e;
+  --tsinghua-gray: #6b7280;
+  --tsinghua-light-bg: #f8f9fc;
+  --tsinghua-border: #e8ecf1;
+  --tsinghua-shadow: 0 4px 20px rgba(139, 26, 74, 0.08);
+  --tsinghua-shadow-hover: 0 8px 32px rgba(139, 26, 74, 0.14);
+  --tsinghua-radius: 16px;
+  --tsinghua-transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
-}
-
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
+* {
+  margin: 0;
   padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
+  box-sizing: border-box;
+}
 
-  .logo {
-    height: 18px;
+body {
+  background: var(--tsinghua-light-bg);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--tsinghua-secondary);
+  line-height: 1.6;
+}
+
+/* ===== Layout principal ===== */
+.app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 32px 24px 40px;
+  min-height: 100vh;
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
-}
-
-.course-card {
-  padding: 24px;
-  background: white;
-  border: 2px solid transparent;
-  border-radius: 16px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-  transition: 0.2s ease;
-}
-
-.course-card:hover {
-  transform: translateY(-2px);
-}
-
-.course-card.selected {
-  border-color: #2563eb;
-}
-
-.course-header {
+/* ===== Header ===== */
+.header {
   display: flex;
   justify-content: space-between;
-  gap: 15px;
+  align-items: center;
+  padding: 20px 28px;
+  background: white;
+  border-radius: var(--tsinghua-radius);
+  box-shadow: var(--tsinghua-shadow);
+  margin-bottom: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: box-shadow var(--tsinghua-transition);
 }
 
-.course-code {
-  font-size: 13px;
-  font-weight: bold;
-  color: #6b7280;
+.header:hover {
+  box-shadow: var(--tsinghua-shadow-hover);
 }
 
-.course-card h3 {
-  margin: 8px 0 0;
+.header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--tsinghua-secondary);
+  letter-spacing: -0.5px;
+}
+
+.header h1::before {
+  content: '✦ ';
+  color: var(--tsinghua-primary);
   font-size: 20px;
 }
 
-.credits {
-  white-space: nowrap;
-  font-size: 13px;
-  font-weight: bold;
+.header p {
+  font-size: 14px;
+  color: var(--tsinghua-gray);
+  margin-top: 2px;
+  font-weight: 400;
 }
 
-.course-details {
-  display: flex;
-  gap: 40px;
-  margin: 24px 0;
-}
-
-.course-details span {
-  display: block;
-  margin-bottom: 5px;
-  font-size: 13px;
-  color: #6b7280;
-}
-
-.course-details strong {
-  font-size: 18px;
-}
-
-.course-button {
-  width: 100%;
-  padding: 12px;
-  border: none;
-  border-radius: 9px;
-  background: #2563eb;
-  color: white;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.course-button:hover {
-  background: #1d4ed8;
-}
-
-.course-button.remove {
-  background: #dc2626;
-}
-
-.course-button.remove:hover {
-  background: #b91c1c;
-}
-
-.course-button:disabled {
-  background: #9ca3af;
-  cursor: not-allowed;
-}
-.success-message {
-  padding: 14px 18px;
-  margin-bottom: 20px;
-  background: #ecfdf5;
-  border: 1px solid #86efac;
+.header button {
+  padding: 10px 24px;
+  border: 2px solid var(--tsinghua-border);
   border-radius: 10px;
-  color: #166534;
+  background: transparent;
+  color: var(--tsinghua-secondary);
+  font-size: 14px;
   font-weight: 600;
+  cursor: pointer;
+  transition: all var(--tsinghua-transition);
+  letter-spacing: 0.3px;
 }
-.enrollment-actions {
+
+.header button:hover {
+  background: var(--tsinghua-primary);
+  color: white;
+  border-color: var(--tsinghua-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 26, 74, 0.2);
+}
+
+/* ===== Tarjeta del estudiante ===== */
+.student-card {
   display: flex;
-  gap: 10px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 24px 28px;
+  background: white;
+  border-radius: var(--tsinghua-radius);
+  box-shadow: var(--tsinghua-shadow);
+  margin-bottom: 32px;
+  border-left: 4px solid var(--tsinghua-primary);
+  transition: box-shadow var(--tsinghua-transition);
+}
+
+.student-card:hover {
+  box-shadow: var(--tsinghua-shadow-hover);
+}
+
+.student-card .label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--tsinghua-gray);
+  margin-bottom: 4px;
+}
+
+.student-card h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--tsinghua-secondary);
+}
+
+.student-card > div:first-child p {
+  font-size: 15px;
+  color: var(--tsinghua-gray);
+  font-weight: 400;
+}
+
+.student-info {
+  display: flex;
+  gap: 32px;
   flex-wrap: wrap;
 }
 
-.edit-button,
-.cancel-button {
-  padding: 11px 18px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  border: none;
+.student-info > div {
+  text-align: center;
+  padding: 8px 16px;
+  background: var(--tsinghua-light-bg);
+  border-radius: 10px;
+  min-width: 80px;
 }
 
-.edit-button {
-  background: #2563eb;
-  color: white;
+.student-info strong {
+  display: block;
+  font-size: 20px;
+  color: var(--tsinghua-primary);
+  margin-top: 4px;
 }
 
-.edit-button:hover {
-  background: #1d4ed8;
+/* ===== Sección de cursos ===== */
+.courses-section {
+  background: white;
+  border-radius: var(--tsinghua-radius);
+  padding: 28px 28px 32px;
+  box-shadow: var(--tsinghua-shadow);
+  margin-bottom: 32px;
+  transition: box-shadow var(--tsinghua-transition);
 }
 
-.cancel-button {
-  background: #dc2626;
-  color: white;
+.courses-section:hover {
+  box-shadow: var(--tsinghua-shadow-hover);
 }
 
-.cancel-button:hover {
-  background: #b91c1c;
-}
-.course-header {
+.section-title {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--tsinghua-light-bg);
 }
 
-.course-code {
-  display: inline-block;
-  margin-top: 5px;
-  color: #6b7280;
+.section-title h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--tsinghua-secondary);
+}
+
+.section-title p {
   font-size: 14px;
+  color: var(--tsinghua-gray);
+  margin-top: 2px;
+}
+
+.course-count {
+  padding: 6px 18px;
+  background: var(--tsinghua-light-bg);
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--tsinghua-primary);
+  white-space: nowrap;
+  border: 1px solid rgba(139, 26, 74, 0.1);
+}
+
+/* ===== Mensajes ===== */
+.error-message {
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 12px;
+  color: #991b1b;
   font-weight: 500;
+  font-size: 14px;
+  animation: slideDown 0.4s ease-out;
+}
+
+.success-message {
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 12px;
+  color: #166534;
+  font-weight: 600;
+  font-size: 14px;
+  animation: slideDown 0.4s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Grid de cursos ===== */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* ===== CourseCard - Estilo Tsinghua ===== */
+.course-card {
+  padding: 0;
+  background: white;
+  border: 1px solid var(--tsinghua-border);
+  border-radius: var(--tsinghua-radius);
+  overflow: hidden;
+  transition: all var(--tsinghua-transition);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(139, 26, 74, 0.10);
+  border-color: rgba(139, 26, 74, 0.2);
+}
+
+.course-card.selected {
+  border-color: var(--tsinghua-primary);
+  box-shadow: 0 0 0 1px var(--tsinghua-primary), 0 12px 40px rgba(139, 26, 74, 0.12);
+}
+
+.course-card .course-content {
+  padding: 20px 24px 24px;
+}
+
+.course-header {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.course-header .course-title-group {
+  flex: 1;
+}
+
+.course-header h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--tsinghua-secondary);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.course-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.course-header > div:first-child {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .selected-badge {
-  padding: 5px 9px;
+  padding: 4px 14px;
   border-radius: 20px;
-  background: #dcfce7;
-  color: #166534;
-  font-size: 12px;
+  background: var(--tsinghua-primary);
+  color: white;
+  font-size: 11px;
   font-weight: 700;
   white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  animation: popIn 0.3s ease-out;
 }
 
+@keyframes popIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Información del curso */
 .course-info {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin: 20px 0;
+  gap: 8px;
+  margin: 16px 0 20px;
 }
 
 .info-item {
-  padding: 12px;
-  border-radius: 8px;
-  background: #f9fafb;
+  padding: 19px 14px;
+  border-radius: 10px;
+  background: var(--tsinghua-light-bg);
+  transition: background var(--tsinghua-transition);
+}
+
+.info-item:hover {
+  background: #f1f3f7;
 }
 
 .info-item span {
   display: block;
-  margin-bottom: 5px;
-  color: #6b7280;
-  font-size: 13px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--tsinghua-gray);
+  margin-bottom: 2px;
 }
 
 .info-item strong {
-  font-size: 18px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--tsinghua-secondary);
 }
 
 .available-seats {
@@ -367,20 +390,355 @@
   color: #dc2626;
 }
 
+/* Footer del curso */
 .course-footer {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  margin-top: 4px;
+}
+
+.course-button {
+  width: 100%;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: var(--tsinghua-primary);
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--tsinghua-transition);
+  letter-spacing: 0.3px;
+}
+
+.course-button:hover:not(:disabled) {
+  background: var(--tsinghua-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 26, 74, 0.25);
+}
+
+.course-button:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.course-button.remove {
+  background: #dc2626;
+}
+
+.course-button.remove:hover:not(:disabled) {
+  background: #b91c1c;
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.25);
+}
+
+.course-button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
 .no-seats-message {
   color: #dc2626;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
+  padding: 10px 0;
 }
 
 .enrolled-message {
-  color: #166534;
-  font-size: 14px;
+  color: var(--tsinghua-primary);
+  font-size: 13px;
   font-weight: 700;
+  padding: 10px 0;
+}
+
+/* ===== EnrollmentSummary - Estilo Tsinghua ===== */
+.enrollment-summary {
+  background: white;
+  border-radius: var(--tsinghua-radius);
+  padding: 28px;
+  box-shadow: var(--tsinghua-shadow);
+  border-top: 4px solid var(--tsinghua-primary);
+  transition: box-shadow var(--tsinghua-transition);
+}
+
+.enrollment-summary:hover {
+  box-shadow: var(--tsinghua-shadow-hover);
+}
+
+.enrollment-summary .summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.enrollment-summary h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--tsinghua-secondary);
+}
+
+.enrollment-summary .credits-info {
+  font-size: 15px;
+  color: var(--tsinghua-gray);
+}
+
+.enrollment-summary .credits-info strong {
+  color: var(--tsinghua-primary);
+  font-size: 18px;
+}
+
+.enrollment-summary .selected-courses {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0 20px;
+}
+
+.enrollment-summary .course-tag {
+  padding: 6px 16px;
+  background: var(--tsinghua-light-bg);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--tsinghua-secondary);
+  border: 1px solid var(--tsinghua-border);
+}
+
+.enrollment-summary .course-tag .tag-credits {
+  color: var(--tsinghua-gray);
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.enrollment-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.confirm-button,
+.edit-button,
+.cancel-button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--tsinghua-transition);
+  letter-spacing: 0.3px;
+}
+
+.confirm-button {
+  background: var(--tsinghua-primary);
+  color: white;
+}
+
+.confirm-button:hover:not(:disabled) {
+  background: var(--tsinghua-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 26, 74, 0.25);
+}
+
+.confirm-button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.edit-button {
+  background: var(--tsinghua-primary);
+  color: white;
+}
+
+.edit-button:hover {
+  background: var(--tsinghua-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 26, 74, 0.25);
+}
+
+.cancel-button {
+  background: #dc2626;
+  color: white;
+}
+
+.cancel-button:hover {
+  background: #b91c1c;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(220, 38, 38, 0.25);
+}
+
+.enrollment-empty {
+  color: var(--tsinghua-gray);
+  font-size: 14px;
+  padding: 12px 0;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .app {
+    padding: 24px 16px 32px;
+  }
+
+  .courses-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 18px 20px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .student-card {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .student-info {
+    width: 100%;
+    justify-content: space-around;
+    gap: 12px;
+  }
+
+  .student-info > div {
+    flex: 1;
+    min-width: 60px;
+  }
+
+  .courses-section {
+    padding: 20px 16px 24px;
+  }
+
+  .section-title {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .course-count {
+    align-self: flex-start;
+  }
+
+  .courses-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .enrollment-summary {
+    padding: 20px 16px;
+  }
+
+  .enrollment-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .enrollment-actions button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .course-info {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .app {
+    padding: 16px 12px 24px;
+  }
+
+  .header {
+    padding: 14px 16px;
+  }
+
+  .header h1 {
+    font-size: 18px;
+  }
+
+  .student-card h2 {
+    font-size: 18px;
+  }
+
+  .student-info strong {
+    font-size: 17px;
+  }
+
+  .course-card .course-content {
+    padding: 16px;
+  }
+
+  .course-header h3 {
+    font-size: 16px;
+  }
+
+  .course-button {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .confirm-button,
+  .edit-button,
+  .cancel-button {
+    padding: 10px 20px;
+    font-size: 13px;
+  }
+}
+
+/* ===== Utilidades ===== */
+.text-muted {
+  color: var(--tsinghua-gray);
+}
+
+.bg-primary-light {
+  background: rgba(139, 26, 74, 0.05);
+}
+
+.border-primary {
+  border-color: var(--tsinghua-primary);
+}
+
+/* ===== Scrollbar personalizada (opcional) ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--tsinghua-light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tsinghua-primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tsinghua-primary-dark);
+}
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.header-logo {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+  border-radius: 10px;
 }
