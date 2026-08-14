@@ -81,7 +81,7 @@ matriculacion-academica/
 
 1: Clonar el repositorio: https://github.com/davidsamirmontanomercado-web/matriculacion-academica.git
 2: Instalar las dependencias: npm install
-3: Instalar las dependencias: npm run dev (La aplicación estará disponible http://localhost:5173/)
+3: Iniciar servidor de desarrollo: npm run dev (La aplicación estará disponible http://localhost:5173/)
 
 ## Persistencia de datos
 
@@ -101,3 +101,7 @@ Login: gestiona el inicio de sesión del estudiante y utiliza Login.css para sus
 CourseCard: representa cada curso disponible y permite seleccionarlo o quitarlo.
 EnrollmentSummary: muestra el resumen de los cursos seleccionados y las acciones de matrícula.
 App: coordina el funcionamiento general de la aplicación y administra el estado principal.
+
+### Url vercel
+
+https://matriculacion-academica-phi.vercel.app/
