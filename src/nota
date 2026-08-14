@@ -3,19 +3,6 @@ npm run build
 npm run lint
 localStorage.removeItem("matricula");
 
-# Sistema de Matriculación Académica
-
-## Descripción
-
-## Tecnologías
-
-## Funcionalidades
-
-## Validaciones
-
-## Estructura del proyecto
-
-## Instalación
 
 ## Ejecución
 

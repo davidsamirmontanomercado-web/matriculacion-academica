@@ -1,8 +1,14 @@
 # Sistema de Matriculación Académica
 
-Aplicación web desarrollada en React que permite a un estudiante consultar y seleccionar cursos disponibles para su semestre académico, validando cupos, créditos permitidos y estado de matrícula.
+## Descripción
 
-## Tecnologías utilizadas
+Aplicación web para gestionar la matrícula académica de un estudiante.
+
+El sistema permite iniciar sesión mediante el ID del estudiante, consultar los cursos disponibles según el semestre, seleccionar cursos, validar los créditos permitidos y confirmar, modificar o cancelar una matrícula.
+
+La matrícula confirmada se almacena en `localStorage`, permitiendo conservar la información aunque se recargue la página.
+
+## Tecnologías
 
 - React
 - Vite
@@ -10,29 +16,36 @@ Aplicación web desarrollada en React que permite a un estudiante consultar y se
 - HTML5
 - CSS3
 - JSON
-- LocalStorage
-- Git / GitHub
+- localStorage
+- Oxlint
+- Git y GitHub
 
 ## Funcionalidades
 
-La aplicación permite:
+- Inicio de sesión mediante ID de estudiante.
+- Visualización de la información del estudiante.
+- Consulta de cursos disponibles.
+- Visualización de código, créditos y cupos disponibles de cada curso.
+- Selección y eliminación de cursos.
+- Cálculo automático de créditos seleccionados.
+- Confirmación de matrícula.
+- Modificación de la matrícula.
+- Cancelación de la matrícula.
+- Persistencia de la matrícula mediante `localStorage`.
+- Mensajes de error y confirmación.
+- Cierre de sesión.
+- Favicon personalizado.
 
-- Consultar la información del estudiante.
-- Mostrar los cursos disponibles.
-- Filtrar los cursos correspondientes al semestre actual.
-- Mostrar créditos de cada curso.
-- Mostrar los cupos disponibles.
-- Seleccionar múltiples cursos.
-- Evitar seleccionar cursos sin cupos.
-- Validar que el estudiante esté matriculado en el periodo académico.
-- Validar el límite máximo de créditos.
-- Visualizar un resumen de la matrícula.
-- Confirmar la matrícula.
-- Guardar la matrícula en `localStorage`.
-- Recuperar la matrícula después de recargar la página.
-- Modificar una matrícula confirmada.
-- Cancelar una matrícula.
-- Mostrar mensajes de validación y confirmación.
+## Validaciones
+
+El sistema realiza diferentes validaciones antes de permitir una matrícula:
+
+- Verifica que el ID ingresado corresponda al estudiante.
+- Verifica que el estudiante esté matriculado en el periodo académico.
+- Verifica que el curso tenga cupos disponibles.
+- Evita seleccionar el mismo curso más de una vez.
+- Evita superar el límite de créditos permitido.
+- Verifica que exista al menos un curso seleccionado antes de confirmar.
 
 ## Estructura del proyecto
 
@@ -40,11 +53,14 @@ La aplicación permite:
 matriculacion-academica/
 │
 ├── public/
+│   └── Favicon.png
 │
 ├── src/
 │   ├── components/
 │   │   ├── CourseCard.jsx
-│   │   └── EnrollmentSummary.jsx
+│   │   ├── EnrollmentSummary.jsx
+│   │   ├── Login.jsx
+│   │   └── Login.css
 │   │
 │   ├── data/
 │   │   ├── cursos.json
@@ -56,9 +72,40 @@ matriculacion-academica/
 │   └── main.jsx
 │
 ├── .gitignore
+├── index.html
 ├── package.json
 ├── package-lock.json
-├── vite.config.js
-└── README.md
+└── vite.config.js
 
-> Nota: los cursos proporcionados en el dataset de prueba suman un máximo de 14 créditos disponibles para el semestre 2, aunque el estudiante tiene permitido matricular hasta 20 créditos.
+## Instalación
+
+1: Clonar el repositorio: https://github.com/davidsamirmontanomercado-web/matriculacion-academica.git
+2: Instalar las dependencias: npm install
+3: Instalar las dependencias: npm run dev (La aplicación estará disponible http://localhost:5173/)
+
+## Persistencia de datos
+
+La matrícula confirmada se almacena utilizando localStorage. La aplicación recupera esta información al cargar nuevamente la página mediante useEffect. Para cancelar una matrícula se elimina la información almacenada localStorage.removeItem("matricula");
+
+## Decisiones técnicas
+
+Se utilizó React para construir la interfaz mediante componentes reutilizables y Vite como herramienta de desarrollo y construcción del proyecto. Se utilizó useState para manejar el estado de: (Usuario autenticado,Cursos seleccionados,Mensajes de error.Estado de la matrícula confirmada.)
+
+Se utilizó useEffect para recuperar la matrícula almacenada en localStorage cuando se carga la aplicación. 
+
+### Componentización
+
+Con respecto a la componentización la interfaz fue dividida en componentes para facilitar su mantenimiento y reutilización:
+
+Login: gestiona el inicio de sesión del estudiante y utiliza Login.css para sus estilos.
+CourseCard: representa cada curso disponible y permite seleccionarlo o quitarlo.
+EnrollmentSummary: muestra el resumen de los cursos seleccionados y las acciones de matrícula.
+App: coordina el funcionamiento general de la aplicación y administra el estado principal.
+
+## Interfaces
+login 
+![alt text](image.png)
+
+sistema de matricula
+
+![alt text](image-1.png)
