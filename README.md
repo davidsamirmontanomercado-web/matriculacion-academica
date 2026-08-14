@@ -101,11 +101,3 @@ Login: gestiona el inicio de sesión del estudiante y utiliza Login.css para sus
 CourseCard: representa cada curso disponible y permite seleccionarlo o quitarlo.
 EnrollmentSummary: muestra el resumen de los cursos seleccionados y las acciones de matrícula.
 App: coordina el funcionamiento general de la aplicación y administra el estado principal.
-
-## Interfaces
-login 
-![alt text](image.png)
-
-sistema de matricula
-
-![alt text](image-1.png)
