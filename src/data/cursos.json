@@ -15,7 +15,7 @@
     "creditos": 4,
     "semestre": 2,
     "limiteCupos": 20,
-    "matriculados": 20
+    "matriculados": 2
   },
   {
     "id": 3,
@@ -40,7 +40,7 @@
     "nombre": "Álgebra Lineal",
     "codigo": "ALG103",
     "creditos": 4,
-    "semestre": 1,
+    "semestre": 2,
     "limiteCupos": 50,
     "matriculados": 35
   },
@@ -48,7 +48,7 @@
     "id": 6,
     "nombre": "Diseño de Interfaces",
     "codigo": "UX203",
-    "creditos": 4,
+    "creditos": 6,
     "semestre": 2,
     "limiteCupos": 15,
     "matriculados": 10
